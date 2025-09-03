@@ -1,0 +1,18 @@
+#root {
+  width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+button {
+  /* border-radius: 8px;
+background-color: var(--color-primary);
+display: flex;
+padding: 18px 24px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+color:#FFF; */
+border:0;
+  cursor: pointer;
+}

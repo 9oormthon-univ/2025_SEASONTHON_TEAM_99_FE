@@ -1,0 +1,234 @@
+.pageContainer {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+.header {
+    margin-bottom: 24px;
+}
+
+.backLink {
+width: 100%;
+height: 24px;
+justify-content: flex-start;
+border-bottom: 1.5px solid  #E5E5EC;
+    margin-bottom: 24px;
+    padding: 28px 0;
+color: #000;
+font-size: 18px;
+font-style: normal;
+font-weight: 600;
+line-height: 24px; /* 133.333% */
+display: flex;
+}
+
+.mainContent {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+/* 상단 정보 카드 */
+.titleCard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-radius: 14px;
+    margin-bottom: 52px;
+}
+hr {
+    width: 100%;
+    border-top: 1.5px solid #E5E5EC;
+    
+}
+.titleHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+        align-items: flex-start;
+
+}
+
+.statusBadge {
+    display: inline-block;
+    width: fit-content;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* 상태별 색상 */
+.completed { background-color: #EFF5FF; color: #1D56BC; }
+.inProgress { background-color: #E3F3E6; color: #006E18; }
+.beforeStart { background-color: #E4E4E4; color: #111111; }
+
+.titleHeader h1 {
+    font-size: 32px;
+font-style: normal;
+font-weight: 600;
+line-height: 34px; /* 106.25% */
+letter-spacing: -0.8px;
+margin: 0;
+}
+
+.titleMeta {
+    display: flex;
+    gap:18px;
+    font-size: 16px;
+    flex-basis: auto;
+font-style: normal;
+font-weight: 400;
+line-height: 20px; /* 125% */
+letter-spacing: -0.4px;
+}
+.icon {
+    width: 20px;
+    height: 20px;
+}
+.location {
+  display: flex;
+  align-items: center;
+  color: #505050;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  /* 125% */
+  letter-spacing: -0.4px;
+
+}
+.likes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+  color: #D13535;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+    align-items: flex-start;
+    align-content: stretch;
+
+}
+
+.section h2 {
+font-size: 24px;
+font-style: normal;
+font-weight: 600;
+line-height: 34px; /* 141.667% */
+letter-spacing: -0.6px;
+    margin: 0;
+    margin-bottom: 18px;
+}
+
+.section > p {
+    line-height: 1.7;
+    color: #333;
+    margin: 0;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+/* 그리드 컨테이너 */
+.gridContainer {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* 상세 정보 카드 */
+.detailCard {
+    display: flex;
+    align-items: flex-start; 
+    gap: 24px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 2px 6px 0 rgba(35, 48, 59, 0.06);
+}
+
+.detailCardHeader {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 32px;
+}
+
+.detailCardHeader h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.detailIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 1px solid #E5E5EC;
+    flex-shrink: 0; 
+}
+.detailCardContent {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 32px;
+    flex-direction: column;
+    text-align: left;
+}
+.detailCardContent .gridTitle {
+    font-size: 24px;
+font-style: normal;
+font-weight: 600;
+line-height: 150%;
+letter-spacing: -0.6px;
+color:#000;
+}
+.detailCardContent p {
+    margin: 0;
+    line-height: 1.6;
+    color: #505050;
+}
+
+/* 신청 버튼 */
+.applyButton {
+   display: inline-flex; 
+  height: 48px;
+  padding: 0 24px; 
+  gap:4px;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  
+  background-color: #0C1C56; 
+  border-radius: 8px;
+  border: none; 
+  color : white;
+ font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: 20px; /* 125% */
+letter-spacing: -0.4px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.applyButton:hover {
+    background-color: #1d2d7c;
+}
+
