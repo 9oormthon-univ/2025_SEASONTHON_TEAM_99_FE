@@ -1,96 +1,87 @@
 .pageContainer {
-    width: 100%;
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 80px;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
 }
 
 .header {
-    margin-bottom: 24px;
-}
-
-.backLink {
-width: 100%;
-height: 24px;
-justify-content: flex-start;
-border-bottom: 1.5px solid  #E5E5EC;
-    margin-bottom: 24px;
-    padding: 28px 0;
-color: #000;
-font-size: 18px;
-font-style: normal;
-font-weight: 600;
-line-height: 24px; /* 133.333% */
-display: flex;
+  margin-bottom: 24px;
 }
 
 .mainContent {
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
 }
 
 /* 상단 정보 카드 */
 .titleCard {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-end;
-    border-radius: 14px;
-    margin-bottom: 52px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-radius: 14px;
+  margin-bottom: 4px;
 }
 hr {
-    width: 100%;
-    border-top: 1.5px solid #E5E5EC;
-    
+  width: 100%;
+  border-top: 1.5px solid #e5e5ec;
 }
 .titleHeader {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-        align-items: flex-start;
-
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
 }
 
 .statusBadge {
-    display: inline-block;
-    width: fit-content;
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 500;
+  display: inline-block;
+  width: fit-content;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 /* 상태별 색상 */
-.completed { background-color: #EFF5FF; color: #1D56BC; }
-.inProgress { background-color: #E3F3E6; color: #006E18; }
-.beforeStart { background-color: #E4E4E4; color: #111111; }
+.completed {
+  background-color: #eff5ff;
+  color: #1d56bc;
+}
+.inProgress {
+  background-color: #e3f3e6;
+  color: #006e18;
+}
+.beforeStart {
+  background-color: #e4e4e4;
+  color: #111111;
+}
 
 .titleHeader h1 {
-    font-size: 32px;
-font-style: normal;
-font-weight: 600;
-line-height: 34px; /* 106.25% */
-letter-spacing: -0.8px;
-margin: 0;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 34px; /* 106.25% */
+  letter-spacing: -0.8px;
+  margin: 0;
 }
 
 .titleMeta {
-    display: flex;
-    gap:18px;
-    font-size: 16px;
-    flex-basis: auto;
-font-style: normal;
-font-weight: 400;
-line-height: 20px; /* 125% */
-letter-spacing: -0.4px;
+  display: flex;
+  gap: 18px;
+  font-size: 16px;
+  flex-basis: auto;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 125% */
+  letter-spacing: -0.4px;
 }
 .icon {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
 }
 .location {
   display: flex;
@@ -102,7 +93,6 @@ letter-spacing: -0.4px;
   line-height: 20px;
   /* 125% */
   letter-spacing: -0.4px;
-
 }
 .likes {
   display: flex;
@@ -110,125 +100,206 @@ letter-spacing: -0.4px;
   align-items: center;
   gap: 6px;
   font-size: 16px;
-  color: #D13535;
+  color: #d13535;
 }
 
 .section {
-    display: flex;
-    flex-direction: column;
-    align-self: stretch;
-    align-items: flex-start;
-    align-content: stretch;
-
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  align-items: flex-start;
+  align-content: stretch;
 }
 
 .section h2 {
-font-size: 24px;
-font-style: normal;
-font-weight: 600;
-line-height: 34px; /* 141.667% */
-letter-spacing: -0.6px;
-    margin: 0;
-    margin-bottom: 18px;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 34px; /* 141.667% */
+  letter-spacing: -0.6px;
+  margin: 0;
+  margin-bottom: 18px;
 }
 
 .section > p {
-    line-height: 1.7;
-    color: #333;
-    margin: 0;
-    background: #f9f9f9;
-    border-radius: 8px;
+  line-height: 1.7;
+  color: #333;
+  margin: 0;
+  background: #f9f9f9;
+  border-radius: 8px;
+  text-align: left;
 }
 
 /* 그리드 컨테이너 */
 .gridContainer {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
 
 /* 상세 정보 카드 */
 .detailCard {
-    display: flex;
-    align-items: flex-start; 
-    gap: 24px;
-    background-color: white;
-    border-radius: 12px;
-    padding: 40px;
-    box-shadow: 0 2px 6px 0 rgba(35, 48, 59, 0.06);
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  background-color: white;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 2px 6px 0 rgba(35, 48, 59, 0.06);
 }
 
 .detailCardHeader {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
 }
 
 .detailCardHeader h4 {
-    font-size: 16px;
-    font-weight: 600;
-    margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
 }
 
 .detailIcon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: #fff;
-    border-radius: 50%;
-    border: 1px solid #E5E5EC;
-    flex-shrink: 0; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  border-radius: 50%;
+  border: 1px solid #e5e5ec;
+  flex-shrink: 0;
 }
 .detailCardContent {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 32px;
-    flex-direction: column;
-    text-align: left;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 32px;
+  flex-direction: column;
+  text-align: left;
 }
 .detailCardContent .gridTitle {
-    font-size: 24px;
-font-style: normal;
-font-weight: 600;
-line-height: 150%;
-letter-spacing: -0.6px;
-color:#000;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  letter-spacing: -0.6px;
+  color: #000;
 }
 .detailCardContent p {
-    margin: 0;
-    line-height: 1.6;
-    color: #505050;
+  margin: 0;
+  line-height: 1.6;
+  color: #505050;
 }
 
 /* 신청 버튼 */
 .applyButton {
-   display: inline-flex; 
+  display: inline-flex;
   height: 48px;
-  padding: 0 24px; 
-  gap:4px;
+  padding: 0 24px;
+  gap: 4px;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  
-  background-color: #0C1C56; 
+
+  background-color: #0c1c56;
   border-radius: 8px;
-  border: none; 
-  color : white;
- font-size: 16px;
-font-style: normal;
-font-weight: 600;
-line-height: 20px; /* 125% */
-letter-spacing: -0.4px;
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px; /* 125% */
+  letter-spacing: -0.4px;
   text-align: center;
   cursor: pointer;
+  text-decoration: none;
   transition: background-color 0.2s;
 }
 
 .applyButton:hover {
-    background-color: #1d2d7c;
+  background-color: #1d2d7c;
 }
 
+@media (max-width: 768px) {
+  .pageContainer {
+    padding-bottom: 120px;
+    gap: 40px;
+  }
+
+  .header {
+    margin-bottom: 0;
+  }
+
+  /* --- 상단 정보 카드 레이아웃 변경 --- */
+
+  .titleCard {
+    position: relative; /* 자식 요소(.statusBadge)의 absolute 포지셔닝 기준점 */
+    flex-direction: column; /* 세로 정렬로 변경 */
+    align-items: flex-start; /* 왼쪽 정렬 */
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .titleHeader h1 {
+    font-size: 24px; /* 모바일용 제목 크기 */
+    line-height: 1.3;
+  }
+
+  .titleMeta {
+    order: 2; /* 제목(h1) 아래로 순서 변경 */
+  }
+
+  /* [핵심] 상태 배지를 오른쪽으로 이동 
+    - 데스크탑의 '신청하기' 버튼 자리를 시각적으로 대체 
+  */
+  .statusBadge {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  /* 그리드 레이아웃을 1열로 변경 */
+  .gridContainer {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .detailCard {
+    padding: 24px;
+    gap: 16px;
+  }
+
+  .detailCardContent .gridTitle {
+    font-size: 20px;
+  }
+
+  .section h2 {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  /* [핵심] '신청하기' 버튼을 하단 고정 바로 만듭니다.
+    - 기존 위치에서는 보이지 않게 됩니다.
+  */
+  .applyButton {
+    position: fixed; /* 화면에 고정 */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+
+    /* 디자인을 '바' 형태로 변경 */
+    border-radius: 0;
+    height: auto;
+    padding: 16px;
+    padding-bottom: calc(
+      16px + env(safe-area-inset-bottom)
+    ); /* 아이폰 하단 노치 대응 */
+
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+}

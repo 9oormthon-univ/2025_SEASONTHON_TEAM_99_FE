@@ -6,9 +6,10 @@
   height: 140px;
   padding: 40px;
   background-color: white;
-  border: 1px solid #E5E5EC;
+  border: 1px solid #e5e5ec;
   border-radius: 14px;
   box-sizing: border-box;
+  text-decoration: none;
 }
 
 .itemContainer:hover {
@@ -22,6 +23,7 @@
   flex-direction: column;
   justify-content: center;
   gap: 12px;
+  max-width: 40vw; /* 임시 값 */
 }
 
 .title {
@@ -32,6 +34,14 @@
   line-height: 20px;
   /* 125% */
   letter-spacing: -0.4px;
+  overflow: hidden;
+  text-align: left;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+a {
+  color: inherit;
 }
 
 .location {
@@ -44,9 +54,7 @@
   line-height: 20px;
   /* 125% */
   letter-spacing: -0.4px;
-
 }
-
 
 .policyDetails {
   display: flex;
@@ -65,10 +73,9 @@
   border-radius: 8px;
 }
 
-
 .completed {
-  background-color: #EFF5FF;
-  color: #1D56BC;
+  background-color: #eff5ff;
+  color: #1d56bc;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -78,8 +85,8 @@
 }
 
 .inProgress {
-  background-color: #E3F3E6;
-  color: #006E18;
+  background-color: #e3f3e6;
+  color: #006e18;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -89,7 +96,7 @@
 }
 
 .beforeStart {
-  background-color: #E4E4E4;
+  background-color: #e4e4e4;
   color: #111111;
   font-size: 14px;
   font-style: normal;
@@ -105,7 +112,7 @@
   align-items: center;
   gap: 6px;
   font-size: 16px;
-  color: #D13535;
+  color: #d13535;
 }
 
 @media (max-width: 768px) {

@@ -1,0 +1,117 @@
+.loginPageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginForm {
+  width: 100%;
+  max-width: 468px;
+  margin-top: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.title {
+  text-align: left;
+  margin: 0;
+  margin-bottom: 8px;
+  color: #111;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 42px; /* 131.25% */
+}
+
+.inputGroup {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.label {
+  color: #767676;
+  text-align: left;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+}
+
+.input {
+  width: 100%;
+  height: 48px;
+  padding: 16px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  border: 1px solid #e5e5ec;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  letter-spacing: -0.4px;
+  transition: border-color 0.2s;
+}
+
+.input::placeholder {
+  color: #999;
+}
+.input:hover {
+  background: #f7f7fb;
+  color: #000;
+}
+.input:focus {
+  outline: none;
+  border-color: #000;
+  color: #000;
+  background-color: #fff;
+}
+
+.loginButton {
+  width: 100%;
+  padding: 16px;
+  background-color: #0c1c56;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 150% */
+  letter-spacing: -0.4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 56px;
+}
+
+.loginButton:hover {
+  background-color: #1d2d7c;
+}
+
+.signupPrompt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  color: #767676;
+}
+
+.signupLink {
+  color: #111;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 142.857% */
+  letter-spacing: -0.35px;
+  transition: color 0.2s;
+}
+
+.signupLink:hover {
+  color: #0c1c56;
+}

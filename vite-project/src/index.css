@@ -1,25 +1,28 @@
 @font-face {
-    font-family: 'Pretendard';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-weight: 400;
-    font-display: swap;
+  font-family: "Pretendard";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-display: swap;
 }
 @font-face {
-    font-family: 'Pretendard';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff') format('woff');
-    font-weight: 600;
-    font-display: swap;
+  font-family: "Pretendard";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff")
+    format("woff");
+  font-weight: 600;
+  font-display: swap;
 }
 @font-face {
-    font-family: 'Pretendard';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff') format('woff');
-    font-weight: 300;
-    font-display: swap;
+  font-family: "Pretendard";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff")
+    format("woff");
+  font-weight: 300;
+  font-display: swap;
 }
 :root {
-  font-family: 'Pretendard';
-  background-color: #F7F7FB;
-  color:#111111;
+  font-family: "Pretendard";
+  background-color: #fff;
+  color: #111111;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -27,17 +30,16 @@
   -moz-osx-font-smoothing: grayscale;
 
   /* Colors */
-  --color-primary: #0C1C56;
-  --color-secondary: #1D56BC;
-  --color-thr: #246BEB;
-  --color-error: #DC0000;
-  --color-line : #F1F1F5;
+  --color-primary: #0c1c56;
+  --color-secondary: #1d56bc;
+  --color-thr: #246beb;
+  --color-error: #dc0000;
+  --color-line: #f1f1f5;
 
   /* Font Colors */
   --font-color-sub: #505050;
   --font-color-disabled: #999999;
 }
-
 
 body {
   margin: 0;
