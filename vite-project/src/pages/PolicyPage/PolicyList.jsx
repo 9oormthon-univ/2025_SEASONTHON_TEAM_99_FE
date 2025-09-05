@@ -61,11 +61,12 @@ const HeartIcon = ({ isActive }) => (
 );
 
 function PolicyList({ policies, activeSort, onSortChange }) {
+  console.log(policies);
   return (
     <div className={styles.policyList}>
       <div className={styles.listDisc}>
-        <p>전체정책 ({policies.length})</p>
-        {/* TODO : 정책 개수 색깔 다른 스타일 */}
+        <p>전체정책 </p>
+        {/* TODO : ({policies.length}) 정책 개수 색깔 다른 스타일 */}
         <div className={styles.sortItem}>
           <button
             className={activeSort === "최신순" ? styles.active : ""}
@@ -102,7 +103,7 @@ function PolicyList({ policies, activeSort, onSortChange }) {
       <div className={styles.policyItemContainer}>
         {policies.length > 0 ? (
           policies.map((policy) => (
-            <PolicyItem key={policy.id} policy={policy} />
+            <PolicyItem key={policy.plcyNo} policy={policy} />
           ))
         ) : (
           <p className={styles.noResults}>검색 결과가 없습니다.</p>

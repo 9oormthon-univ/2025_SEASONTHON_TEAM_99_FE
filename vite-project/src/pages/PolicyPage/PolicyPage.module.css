@@ -6,7 +6,7 @@
   align-items: center;
   gap: 80px;
   margin: 0 auto;
-  margin-top: 160px; /*web Header 80px*/
+  padding-top: 132px; /*web Header 80px, figma 80px인데 시작점이 폰트부터라서 대강*/
 }
 
 .policyCard {
@@ -49,7 +49,7 @@
 
 @media (max-width: 768px) {
   .policyPage {
-    margin-top: 138px; /*mobile Header 110px*/
+    padding-top: 138px; /*mobile Header 110px*/
     gap: 44px;
   }
 }

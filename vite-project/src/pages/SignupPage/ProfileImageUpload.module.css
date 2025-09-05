@@ -1,0 +1,42 @@
+.profileUploadContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.imagePreviewWrapper {
+  position: relative;
+  display: flex;
+  width: 100px;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 8px;
+  background: white;
+}
+
+.imagePreview {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.editOverlay {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  text-align: right;
+  padding-top: 6px;
+  padding-right: 6px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.imagePreviewWrapper:hover .editOverlay {
+  opacity: 1;
+}

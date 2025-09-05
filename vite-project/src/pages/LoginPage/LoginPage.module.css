@@ -2,12 +2,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 132px; /*web Header 80px, figma 80px인데 시작점이 폰트부터라서 대강*/
 }
 
 .loginForm {
   width: 100%;
   max-width: 468px;
-  margin-top: 140px;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -83,7 +83,7 @@
   letter-spacing: -0.4px;
   cursor: pointer;
   transition: background-color 0.2s;
-  margin-top: 56px;
+  margin-top: 56px; /* 80 = 24 + 56 */
 }
 
 .loginButton:hover {
@@ -114,4 +114,37 @@
 
 .signupLink:hover {
   color: #0c1c56;
+}
+
+.input.errorInput {
+  border-color: #dc0000;
+}
+
+.errorMessage {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.325px;
+  text-align: left;
+  margin-top: 8px;
+}
+
+.errorMessage {
+  color: #dc0000;
+}
+
+@media (max-width: 768px) {
+  .loginButton {
+    margin-top: 24px; /* 48 = 24 + 24 */
+  }
+  .loginForm {
+    gap: 18px;
+  }
+  .inputGroup {
+    gap: 8px;
+  }
 }

@@ -1,0 +1,265 @@
+.policyPage {
+  display: flex;
+  max-width: 1280px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+  margin: 0 auto;
+  padding-top: 132px; /*web Header 80px, figma 80px인데 시작점이 폰트부터라서 대강*/
+}
+.sortItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.sortItem button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.3px;
+  padding: 8px 12px;
+  border-radius: 100px;
+  border: 1px solid #e5e5ec;
+  background-color: transparent;
+  cursor: pointer;
+}
+.sortItem button:hover {
+  background-color: #fff;
+}
+.sortItem button.active {
+  background-color: #0c1c56;
+  color: white;
+}
+
+.sortItem span svg {
+  display: none;
+}
+
+.policyCard {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.policyDisc {
+  text-align: left;
+  margin: 0;
+  margin-bottom: 30px; /* 48 - 18 = 30 */
+}
+.postListContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  gap: 24px;
+}
+.title {
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 42px; /* 131.25% */
+  letter-spacing: -0.8px;
+  margin: 0;
+}
+
+.subTitle {
+  color: #505050;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px; /* 137.5% */
+  letter-spacing: -0.4px;
+  margin: 0;
+  margin-top: 8px;
+}
+
+.postButton {
+  width: 100%;
+  background-color: #0c1c56;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px; /* 125% */
+  letter-spacing: -0.4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  gap: 4px;
+}
+.policyOptionBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.dropdownContainer {
+  width: 200px;
+}
+.selection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.resetButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 8px;
+  box-sizing: border-box;
+  background-color: white;
+  border: 1px solid #e5e5ec;
+  border-radius: 100px;
+}
+
+@media (max-width: 768px) {
+  .policyOptionBar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .tag {
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    gap: 8px 6px;
+  }
+  .selection {
+    margin-top: 16px;
+  }
+  .policyPage {
+    padding-top: 138px; /*mobile Header 110px*/
+    gap: 44px;
+  }
+  .sortItem {
+    gap: 4px;
+    align-self: flex-end;
+  }
+  .sortItem button {
+    gap: 0px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 171.429% */
+    color: #999;
+    padding: 0px 0px;
+    border-radius: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  .sortItem button:hover {
+    color: #1d56bc;
+  }
+  .sortItem button.active {
+    background-color: transparent;
+    color: #0c1c56;
+  }
+  .sortItem button svg {
+    display: none;
+  }
+  .sortItem span svg {
+    display: block;
+    vertical-align: middle;
+    padding: 0 1px;
+  }
+}
+
+.pageTitle {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.newPostButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.newPostButton:hover {
+  background-color: #0056b3;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.postItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.postItem:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.postInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.postTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.postMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #868e96;
+  margin: 0;
+}
+
+.postRegion {
+  font-weight: 500;
+}
+
+.postDate {
+  font-size: 14px;
+  color: #adb5bd;
+}
+
+.noPosts {
+  text-align: center;
+  color: #868e96;
+  padding: 40px 0;
+}

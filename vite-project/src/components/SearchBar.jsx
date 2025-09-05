@@ -1,27 +1,36 @@
-import React, { useState } from 'react';
-import styles from './SearchBar.module.css';
+import React, { useState, useEffect } from "react";
+import styles from "./SearchBar.module.css";
+import searchIconUrl from "../assets/search.svg";
 
-import searchIconUrl from '../assets/search.svg?react';
+function SearchBar({ onSearch, initialSearchTerm = "" }) {
+  const [inputValue, setInputValue] = useState(initialSearchTerm);
 
-function SearchBar({ onSearch }) {
-  const [inputValue, setInputValue] = useState('');
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      onSearch(inputValue);
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [inputValue, onSearch]);
+
+  useEffect(() => {
+    setInputValue(initialSearchTerm);
+  }, [initialSearchTerm]);
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault(); 
-    onSearch(inputValue); 
+    event.preventDefault();
+    onSearch(inputValue);
   };
 
   return (
     <form className={styles.searchContainer} onSubmit={handleSubmit}>
-      <img 
-        src={searchIconUrl} 
-        alt="검색" 
-        className={styles.icon} 
-      />
+      <img src={searchIconUrl} alt="검색" className={styles.icon} />
       <input
         type="text"
         className={styles.searchInput}
@@ -34,4 +43,3 @@ function SearchBar({ onSearch }) {
 }
 
 export default SearchBar;
-

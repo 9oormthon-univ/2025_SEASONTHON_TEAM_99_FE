@@ -63,7 +63,9 @@ a {
   gap: 8px;
   width: 68px;
 }
-
+button {
+  background-color: transparent;
+}
 .statusBadge {
   display: flex;
   justify-content: center;
@@ -112,9 +114,11 @@ a {
   align-items: center;
   gap: 6px;
   font-size: 16px;
+  color: #111;
+}
+.liked {
   color: #d13535;
 }
-
 @media (max-width: 768px) {
   .policyDetails {
     width: 58px;

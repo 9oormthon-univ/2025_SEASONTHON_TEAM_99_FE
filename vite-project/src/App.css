@@ -19,3 +19,7 @@ color:#FFF; */
 html {
   overflow-y: scroll;
 }
+hr {
+  width: 100%;
+  border-top: 1.5px solid #e5e5ec;
+}

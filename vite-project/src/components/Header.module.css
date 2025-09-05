@@ -47,6 +47,9 @@
   color: #111;
   white-space: nowrap;
 }
+a {
+  text-decoration: none;
+}
 @media (max-width: 768px) {
   .Header {
     border-bottom-width: 0px;

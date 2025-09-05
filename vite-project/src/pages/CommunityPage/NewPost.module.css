@@ -1,0 +1,171 @@
+.container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 64px;
+  padding-top: 132px; /*web Header 80px, figma 80px인데 시작점이 폰트부터라서 대강*/
+}
+
+.formContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.inputGroup {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.label {
+  margin-bottom: 14px;
+  color: var(--Font-02_black, #111);
+
+  /* PC/Headline/KR/H5_KR_Sb */
+  font-family: Pretendard;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 34px; /* 141.667% */
+  letter-spacing: -0.6px;
+}
+
+.input {
+  width: 100%;
+
+  box-sizing: border-box;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid var(--Line-Regular_Color, #e5e5ec);
+  background: var(--Font-01_White, #fff);
+}
+
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid var(--Line-Regular_Color, #e5e5ec);
+  background: var(--Font-01_White, #fff);
+  height: 420px;
+  overflow: hidden;
+  color: #111;
+  text-overflow: ellipsis;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  letter-spacing: -0.4px;
+}
+
+.dropdownContainer {
+  width: 200px;
+}
+
+.imageUploadButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 200px;
+  color: #868e96;
+  border-radius: 8px;
+  border: 2.5px dashed var(--Line-Regular_Color, #e5e5ec);
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: var(--Font-05_Gray_Disabled, #999);
+  text-overflow: ellipsis;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  letter-spacing: -0.4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.imageUploadButton:hover {
+  background-color: #f1f3f5;
+}
+
+.imagePreviewContainer {
+  position: relative;
+  display: inline-block;
+  margin-top: 16px;
+  margin-right: 10px;
+}
+
+.imagePreview {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+}
+
+.removeImageButton {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #343a40;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonGroup button {
+  padding: 14px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px; /* 111.111% */
+  letter-spacing: -0.45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonGroup button:hover {
+  opacity: 0.85;
+}
+
+.cancelButton {
+  flex: 1;
+  border-radius: 8px;
+  border: 1px solid var(--Line-Regular_Color, #e5e5ec);
+}
+
+.submitButton {
+  border: none;
+  flex: 4;
+  background-color: #0c1c56;
+  color: #ffffff;
+}

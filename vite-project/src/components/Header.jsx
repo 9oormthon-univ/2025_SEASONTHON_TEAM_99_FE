@@ -1,12 +1,12 @@
-// Header.js
-
-import { NavLink, Link, useLocation } from "react-router-dom"; // NavLink와 Link 모두 import
+import { NavLink, Link, useLocation } from "react-router-dom";
 import styles from "./Header.module.css";
-import appIconUrl from "../assets/Icon.png";
+import appIconUrl from "../assets/Icon.svg";
 import titleIconUrl from "../assets/Icontitle.svg";
+import { useAuth } from "../context/AuthContext";
 
 function Header() {
   const location = useLocation();
+  const { user, logout } = useAuth();
 
   return (
     <header className={styles.Header}>
@@ -29,7 +29,6 @@ function Header() {
           </NavLink>
           <NavLink
             to="/community"
-            exact
             className={({ isActive }) =>
               isActive
                 ? `${styles.navigatorItem} ${styles.activeNavItem}`
@@ -51,9 +50,13 @@ function Header() {
         </nav>
 
         <div className={styles.user}>
-          <Link to="/login" className={styles.navigatorItem}>
-            로그인
-          </Link>
+          {user ? (
+            <div>
+              <span>{user}님</span>
+            </div>
+          ) : (
+            <Link to="/login">로그인</Link>
+          )}
         </div>
       </div>
     </header>

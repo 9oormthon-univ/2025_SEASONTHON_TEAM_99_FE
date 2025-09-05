@@ -1,13 +1,25 @@
-import React from "react";
-import { useParams, Link } from "react-router-dom";
-import allPolicies from "../../components/mock.js";
+import React, { useState, useEffect, useMemo } from "react";
+import { useParams, useLocation } from "react-router-dom";
 import styles from "./PolicyDetailPage.module.css";
-import locationIconUrl from "../../assets/location.svg?react";
-import heartIconUrl from "../../assets/fullheart.svg?react";
-import s_cIconUrl from "../../assets/support_content.svg?react";
-import s_sIconUrl from "../../assets/support_size.svg?react";
-import backIconUrl from "../../assets/back.svg?react";
+import axiosInstance from "../../api/axiosInstance";
+
+import locationIconUrl from "../../assets/location.svg";
+import heartIconUrl from "../../assets/fullheart.svg";
+import s_cIconUrl from "../../assets/support_content.svg";
+import s_sIconUrl from "../../assets/support_size.svg";
+import calIconUrl from "../../assets/cal.svg";
 import BacktoList from "../../components/BacktoList";
+import CommentsSection from "../../components/CommentSection";
+const DisplayData = ({ data, fallbackText = "등록된 정보 없음" }) => {
+  // data가 존재하고(null, undefined가 아님) 공백을 제외한 문자열이 있을 때만 내용을 보여줌
+  if (data && String(data).trim() !== "") {
+    // pre-wrap 스타일을 적용하여 API 데이터의 줄바꿈 등을 유지
+    return <p style={{ whiteSpace: "pre-wrap", margin: 0 }}>{data}</p>;
+  }
+  // 그렇지 않으면 fallback 텍스트를 보여줌
+  return <p style={{ color: "#868e96", margin: 0 }}>{fallbackText}</p>;
+};
+
 // 재사용 가능한 상세 정보 카드 컴포넌트
 const DetailIcon = ({ children }) => (
   <div className={styles.detailIcon}>{children}</div>
@@ -16,23 +28,107 @@ const DetailIcon = ({ children }) => (
 const DetailCard = ({ icon, title, children }) => (
   <div className={styles.detailCard}>
     <div className={styles.detailCardHeader}>
-      <DetailIcon>{icon}</DetailIcon>
+      {icon && <DetailIcon>{icon}</DetailIcon>}
       <h4>{title}</h4>
     </div>
     <div className={styles.detailCardContent}>{children}</div>
   </div>
 );
 
-function PolicyDetailPage() {
-  const { policyId } = useParams();
-  const policy = allPolicies.find((p) => p.id === parseInt(policyId));
+// 심사 방법 파싱
+const ScreeningSteps = ({ screeningData }) => {
+  const steps = useMemo(() => {
+    if (!screeningData) return [];
+    return screeningData
+      .split("\n")
+      .map((line) => {
+        const match = line.match(/^(\d+)\.\s*(.*?)\s*:\s*(.*)$/);
+        if (match) {
+          const [, number, title, content] = match;
+          return { number, title, content };
+        }
+        return null;
+      })
+      .filter(Boolean);
+  }, [screeningData]);
 
-  const getStatusClassName = (status) => {
-    if (status === "완료") return styles.completed;
-    if (status === "진행중") return styles.inProgress;
-    if (status === "진행전") return styles.beforeStart;
+  if (steps.length === 0) {
+    return <DisplayData data={screeningData} />;
+  }
+
+  return (
+    <div className={styles.gridContainer}>
+      {steps.map((step) => (
+        <DetailCard key={step.number} icon={step.number}>
+          <p className={styles.gridTitle}>{step.title}</p>
+          <p>{step.content}</p>
+        </DetailCard>
+      ))}
+    </div>
+  );
+};
+
+function PolicyDetailPage() {
+  const { policyName } = useParams();
+  const location = useLocation();
+  const { likes = "...", status = "확인중" } = location.state || {};
+
+  const [policy, setPolicy] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchPolicyDetail = async () => {
+      setLoading(true);
+      setError(null);
+      const decodedPolicyName = decodeURIComponent(policyName);
+
+      try {
+        const response = await axiosInstance.get("/youth/policies/detail", {
+          params: { plcyNm: decodedPolicyName },
+        });
+
+        if (response.data && response.data.isSuccess) {
+          setPolicy(response.data.result);
+        } else {
+          throw new Error(
+            response.data.message || "정책 정보를 불러오지 못했습니다."
+          );
+        }
+      } catch (e) {
+        setError(e);
+        console.error("API 호출 중 오류 발생:", e);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPolicyDetail();
+  }, [policyName]);
+
+  const getStatusClassName = (currentStatus) => {
+    if (currentStatus === "완료") return styles.completed;
+    if (currentStatus === "진행중") return styles.inProgress;
+    if (currentStatus === "진행전") return styles.beforeStart;
     return "";
   };
+
+  if (loading) {
+    return (
+      <div className={styles.container}>
+        <p>정책 정보를 불러오는 중...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className={styles.container}>
+        <p>오류가 발생했습니다: {error.message}</p>
+        <BacktoList />
+      </div>
+    );
+  }
 
   if (!policy) {
     return (
@@ -49,110 +145,121 @@ function PolicyDetailPage() {
         <BacktoList />
       </header>
       <main className={styles.mainContent}>
-        {/* 상단 정보 카드 */}
         <section className={styles.titleCard}>
           <div className={styles.titleHeader}>
             <span
-              className={`${styles.statusBadge} ${getStatusClassName(
-                policy.status
-              )}`}
+              className={`${styles.statusBadge} ${getStatusClassName(status)}`}
             >
-              {policy.status}
+              {status}
             </span>
-            <h1>{policy.title}</h1>
-
+            <h1>{policy.plcyNm}</h1>
             <div className={styles.titleMeta}>
-              <div className={styles.locatin}>
+              <div className={styles.location}>
                 <img src={locationIconUrl} alt="지역" className={styles.icon} />
-                <span>{policy.location}</span>
+                <span>{policy.regions?.join(", ") || "전국"}</span>
               </div>
               <div className={styles.likes}>
                 <img src={heartIconUrl} alt="좋아요" className={styles.icon} />
-
-                <span>{policy.likes}</span>
+                <span>{likes}</span>
               </div>
             </div>
           </div>
           <a
-            href={policy.applicationUrl}
+            href={policy.aplyUrlAddr}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.applyButton}
           >
             신청하기
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-            >
-              <path
-                d="M10.0832 0.583496C9.66895 0.583496 9.33317 0.919284 9.33317 1.3335C9.33317 1.74771 9.66895 2.0835 10.0832 2.0835H12.8558L4.96952 9.96984C4.67663 10.2627 4.67663 10.7376 4.96952 11.0305C5.26241 11.3234 5.73728 11.3234 6.03018 11.0305L13.9165 3.14416V5.91683C13.9165 6.33104 14.2523 6.66683 14.6665 6.66683C15.0807 6.66683 15.4165 6.33104 15.4165 5.91683V1.3335C15.4165 0.919284 15.0807 0.583496 14.6665 0.583496H10.0832Z"
-                fill="white"
-              />
-              <path
-                d="M15.4026 13.9419C15.4165 13.772 15.4165 13.5703 15.4165 13.3583L15.4165 9.66683L13.9165 9.66748V13.8341C13.9165 13.8802 13.8792 13.9175 13.8332 13.9175H2.16657C2.12055 13.9175 2.08324 13.8802 2.08324 13.8341V2.16748C2.08324 2.12146 2.12055 2.08415 2.16657 2.08415H6.33322L6.33318 0.583501L2.64173 0.583499C2.4298 0.583478 2.22809 0.583458 2.05813 0.597345C1.87279 0.612488 1.6602 0.647809 1.44772 0.756074C1.14979 0.907873 0.907576 1.15009 0.755777 1.44802C0.647513 1.6605 0.612191 1.87309 0.597049 2.05843C0.583162 2.2284 0.583182 2.4301 0.583203 2.64204V13.3583C0.583182 13.5702 0.583162 13.7719 0.597049 13.9419C0.612191 14.1272 0.647513 14.3398 0.755777 14.5523C0.907576 14.8502 1.14979 15.0925 1.44772 15.2443C1.6602 15.3525 1.87279 15.3878 2.05813 15.403C2.22808 15.4169 2.42977 15.4169 2.64169 15.4168H13.358C13.5699 15.4169 13.7716 15.4169 13.9416 15.403C14.1269 15.3878 14.3395 15.3525 14.552 15.2443C14.8499 15.0925 15.0921 14.8502 15.2439 14.5523C15.3522 14.3398 15.3875 14.1272 15.4026 13.9419Z"
-                fill="white"
-              />
-            </svg>
           </a>
         </section>
         <hr />
-        {/* 정책 설명 */}
         <section className={styles.section}>
           <h2>정책 설명</h2>
-          <p>{policy.description}</p>
+          <DisplayData data={policy.plcyExplnCn} />
         </section>
-
-        {/* 지원 내용/규모 */}
         <section className={styles.section}>
+          <h2>지원 내용</h2>
           <div className={styles.gridContainer}>
-            <DetailCard icon={<img src={s_cIconUrl} />}>
+            <DetailCard icon={<img src={s_cIconUrl} alt="지원내용" />}>
               <p className={styles.gridTitle}>지원 내용</p>
-              <p>{policy.supportContent}</p>
+              <DisplayData data={policy.plcySprtCn} />
             </DetailCard>
-            <DetailCard icon={<img src={s_sIconUrl} />}>
+            <DetailCard icon={<img src={s_sIconUrl} alt="지원규모" />}>
               <p className={styles.gridTitle}>지원 규모</p>
-              <p>{policy.supportScale}</p>
+              <p>{policy.sprtSclLmtYn === "Y" ? "제한 있음" : "제한 없음"}</p>
             </DetailCard>
           </div>
         </section>
-
-        {/* 신청 정보 */}
         <section className={styles.section}>
           <h2>신청 정보</h2>
           <div className={styles.gridContainer}>
-            <DetailCard icon={"📅"}>
+            <DetailCard icon={<img src={calIconUrl} alt="기간" />}>
               <p className={styles.gridTitle}>신청 기간</p>
-              <p>{policy.applicationPeriod}</p>
-            </DetailCard>
-            <DetailCard icon={"📄"}>
-              <p className={styles.gridTitle}>신청 방법</p>
-              <p>{policy.requiredDocuments}</p>
+              <DisplayData data={policy.aplyYmd} />
+              <p className={styles.gridTitle} style={{ marginTop: "16px" }}>
+                사업 기간
+              </p>
+              <DisplayData
+                data={
+                  policy.bizPrdBgngYmd &&
+                  `${policy.bizPrdBgngYmd}~${policy.bizPrdEndYmd}`
+                }
+              />
             </DetailCard>
           </div>
         </section>
-
-        {/* 자격 요건 */}
         <section className={styles.section}>
           <h2>자격 요건</h2>
-          <p>{policy.eligibility}</p>
+          <div className={styles.grid3Container}>
+            <DetailCard>
+              <p className={styles.gridNTitle}>연령</p>
+              <p style={{ whiteSpace: "pre-wrap" }}>
+                <b>나이:</b> 만 {policy.sprtTrgtMinAge}세 ~ 만{" "}
+                {policy.sprtTrgtMaxAge}세<br />
+              </p>
+            </DetailCard>
+            <DetailCard>
+              <p className={styles.gridNTitle}>지역</p>
+              <DisplayData data={policy.zipCd} />
+            </DetailCard>
+            <DetailCard>
+              <p className={styles.gridNTitle}>학력</p>
+              <DisplayData data={policy.schoolCd} />
+            </DetailCard>
+            <DetailCard>
+              <p className={styles.gridNTitle}>취업 상태</p>
+              <DisplayData data={policy.jobCd} />
+            </DetailCard>
+            <DetailCard>
+              <p className={styles.gridNTitle}>소득 조건</p>
+              <DisplayData data={policy.earnCndSeCd} />
+            </DetailCard>
+            <DetailCard>
+              <p className={styles.gridNTitle}>기타 조건</p>
+              <DisplayData data={policy.addAplyQlfcCndCn} />
+            </DetailCard>
+          </div>
         </section>
-
-        {/* 제출 서류 */}
         <section className={styles.section}>
           <h2>제출 서류</h2>
-          <p>{policy.eligibility}</p>
+          <DisplayData data={policy.sbmsnDcmntCn} />
         </section>
-
-        {/* 심사 방법 */}
         <section className={styles.section}>
           <h2>심사 방법</h2>
-          <p>{policy.eligibility}</p>
+          <div className={styles.screeningDataCon}>
+            <ScreeningSteps screeningData={policy.srngMthdCn} />
+          </div>
         </section>
+        <p>
+          최초등록일 {policy.frstRegDt} 최종수정일 {policy.lastMdfcnDt}
+        </p>
       </main>
-      댓글 컴포넌트 재사용
+      <CommentsSection
+        type="policy"
+        id={policy.plcyNo}
+        metadata={{ plcyNm: policy.plcyNm }}
+      />
     </div>
   );
 }

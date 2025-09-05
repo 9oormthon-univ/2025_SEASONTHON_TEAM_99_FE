@@ -1,0 +1,106 @@
+.pageContainer {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+.mainContent {
+  width: 100%;
+  padding-top: 132px;
+  /* TODO : 정확하게 계산할 것 */
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.policydetail {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.title {
+  display: flex;
+  max-width: 100%;
+  padding: 24px;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  text-align: left;
+  border-radius: 8px;
+  background: #0c1c56;
+  color: var(--Font-01_White, #fff);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 34px; /* 170% */
+  letter-spacing: -0.5px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+.title h1 {
+  color: var(--Font-01_White, #fff);
+  font-family: Pretendard;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 34px; /* 141.667% */
+  letter-spacing: -0.6px;
+  margin: 0;
+}
+.titleMeta {
+  display: flex;
+  gap: 18px;
+  font-size: 16px;
+  flex-basis: auto;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 125% */
+  letter-spacing: -0.4px;
+}
+.contentContainer {
+  display: flex;
+  padding: 0 24px;
+  flex-direction: column;
+  box-sizing: border-box;
+  align-items: flex-start;
+  gap: 32px;
+  align-self: stretch;
+  word-break: keep-all;
+}
+.location {
+  display: flex;
+  align-items: center;
+  color: #f5f5f5;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 125% */
+  letter-spacing: -0.4px;
+}
+.date {
+  color: #f5f5f5;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+  letter-spacing: -0.4px;
+}
+.subdisc {
+  display: flex;
+  gap: 18px;
+  color: #f5f5f5;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 22.5px */
+  letter-spacing: -0.375px;
+}
+.content {
+  text-align: left;
+  box-sizing: border-box;
+}

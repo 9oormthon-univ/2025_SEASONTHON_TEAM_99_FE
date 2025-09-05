@@ -4,7 +4,9 @@
   align-items: center;
   width: 100%;
 }
-
+.dropdownContainer {
+  width: 200px;
+}
 .tag {
   display: flex;
   align-items: center;
